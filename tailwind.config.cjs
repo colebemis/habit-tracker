@@ -7,6 +7,8 @@ module.exports = {
         text: "var(--color-text)",
         "text-secondary": "var(--color-text-secondary)",
         bg: "var(--color-bg)",
+        "bg-checked": "var(--color-bg-checked)",
+        "bg-unchecked": "var(--color-bg-unchecked)",
         divider: "var(--color-divider)",
       },
     },
