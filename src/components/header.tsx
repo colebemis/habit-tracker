@@ -2,6 +2,7 @@ import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import { cx } from "../utils/cx";
+import { DropdownMenu } from "./dropdown-menu";
 
 const MONTH_NAMES = [
   "January",
@@ -70,12 +71,19 @@ export function Header(props: {
             {MONTH_NAMES[minDateInView.getMonth()]}{" "}
             {minDateInView.getFullYear()}
           </h2>
-          <button className="grid h-12 w-12 place-content-center rounded-lg outline-none hover:bg-bg-secondary focus:ring-2 focus:ring-border-focus focus:ring-offset-1 focus:ring-offset-bg">
-            <img
-              src="https://github.com/colebemis.png"
-              className="h-8 w-8 rounded-full"
-            />
-          </button>
+          <DropdownMenu modal={false}>
+            <DropdownMenu.Trigger asChild>
+              <button className="grid h-12 w-12 place-content-center rounded-lg outline-none hover:bg-bg-secondary focus:ring-2 focus:ring-border-focus focus:ring-offset-1 focus:ring-offset-bg">
+                <img
+                  src="https://github.com/colebemis.png"
+                  className="h-8 w-8 rounded-full"
+                />
+              </button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content align="end">
+              <DropdownMenu.Item>Sign out</DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu>
         </div>
         <div className="flex gap-1 px-4">
           {props.dates.map((date) => {
