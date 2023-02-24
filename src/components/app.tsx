@@ -4,6 +4,7 @@ import { Header } from "./header";
 import clsx from "clsx";
 import { CheckIcon, MoreIcon, PlusIcon } from "./icons";
 import { IconButton } from "./icon-button";
+import { DropdownMenu } from "./dropdown-menu";
 
 const habits = [
   {
@@ -63,9 +64,17 @@ export function App() {
           <div key={habit.id} className="flex flex-col gap-2 py-2">
             <div className="sticky left-0 flex h-12 w-screen items-center justify-between px-4">
               <h3 className="text-lg">{habit.title}</h3>
-              <IconButton>
-                <MoreIcon />
-              </IconButton>
+              <DropdownMenu modal={false}>
+                <DropdownMenu.Trigger asChild>
+                  <IconButton>
+                    <MoreIcon />
+                  </IconButton>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content align="end">
+                  <DropdownMenu.Item>Rename</DropdownMenu.Item>
+                  <DropdownMenu.Item>Delete</DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu>
             </div>
             <div className="flex gap-1 px-4">
               {dates.map((date) => {
@@ -77,8 +86,9 @@ export function App() {
                       <div role="separator" className="w-2" />
                     ) : null}
                     <div
+                      tabIndex={0}
                       className={clsx(
-                        "grid h-12 w-12 place-content-center rounded-lg",
+                        "grid h-12 w-12 place-content-center rounded-lg outline-none focus:ring-2 focus:ring-border-focus focus:ring-offset-1 focus:ring-offset-bg",
                         isChecked
                           ? "bg-bg-checked text-text-checked shadow-[inset_0_-3px_0_rgba(0,0,0,0.2)]"
                           : "bg-bg-unchecked"

@@ -63,14 +63,14 @@ export function Header(props: {
   );
 
   return (
-    <div className="table border-b border-divider bg-bg">
+    <div className="table border-b border-border bg-bg bg-clip-padding	dark:bg-clip-border">
       <div className="py-2">
         <div className="sticky left-0 flex h-12 w-screen items-center justify-between px-4">
           <h2 className="text-3xl font-semibold">
             {MONTH_NAMES[minDateInView.getMonth()]}{" "}
             {minDateInView.getFullYear()}
           </h2>
-          <button className="grid h-12 w-12 place-content-center rounded-lg hover:bg-bg-secondary">
+          <button className="grid h-12 w-12 place-content-center rounded-lg outline-none hover:bg-bg-secondary focus:ring-2 focus:ring-border-focus focus:ring-offset-1 focus:ring-offset-bg">
             <img
               src="https://github.com/colebemis.png"
               className="h-8 w-8 rounded-full"
