@@ -76,7 +76,7 @@ export function App() {
       <div>
         <div className="table border-b border-divider">
           <div className="px-4 py-2">
-            <h2 className="inline-block py-2 text-3xl font-semibold leading-8">
+            <h2 className="sticky left-4 inline-block py-2 text-3xl font-semibold leading-8">
               {MONTH_NAMES[minDateInView.getMonth()]}{" "}
               {minDateInView.getFullYear()}
             </h2>
