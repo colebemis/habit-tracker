@@ -1,5 +1,7 @@
+import clsx from "clsx";
 import React from "react";
 import { useInView } from "react-intersection-observer";
+import { cx } from "../utils/cx";
 
 const MONTH_NAMES = [
   "January",
@@ -62,11 +64,20 @@ export function Header(props: {
 
   return (
     <div className="table border-b border-divider bg-bg">
-      <div className="px-4 py-2">
-        <h2 className="sticky left-4 inline-block py-2 text-3xl font-semibold leading-8">
-          {MONTH_NAMES[minDateInView.getMonth()]} {minDateInView.getFullYear()}
-        </h2>
-        <div className="flex gap-1">
+      <div className="py-2">
+        <div className="sticky left-0 flex h-12 w-screen items-center justify-between px-4">
+          <h2 className="text-3xl font-semibold">
+            {MONTH_NAMES[minDateInView.getMonth()]}{" "}
+            {minDateInView.getFullYear()}
+          </h2>
+          <button className="grid h-12 w-12 place-content-center rounded-lg hover:bg-bg-secondary">
+            <img
+              src="https://github.com/colebemis.png"
+              className="h-8 w-8 rounded-full"
+            />
+          </button>
+        </div>
+        <div className="flex gap-1 px-4">
           {props.dates.map((date) => {
             const isFirstOfMonth = date.getDate() === 1;
             return (
@@ -99,11 +110,15 @@ const CalendarDate = React.memo(
       },
       threshold: 1,
     });
+    const isToday = props.date.toDateString() === new Date().toDateString();
 
     return (
       <div
         ref={ref}
-        className="flex w-12 flex-col items-center gap-1 py-2 text-sm leading-4 text-text-secondary"
+        className={cx(
+          "flex w-12 flex-col items-center gap-1 py-2 text-sm leading-4 text-text-secondary",
+          isToday && "font-medium text-text-today"
+        )}
       >
         <span>{DAY_NAMES[props.date.getDay()].slice(0, 1)}</span>
         <span>{props.date.getDate()}</span>

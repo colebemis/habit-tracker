@@ -2,6 +2,8 @@ import { addMonths, eachDayOfInterval } from "date-fns";
 import React from "react";
 import { Header } from "./header";
 import clsx from "clsx";
+import { CheckIcon, MoreIcon, PlusIcon } from "./icons";
+import { IconButton } from "./icon-button";
 
 const habits = [
   {
@@ -58,11 +60,14 @@ export function App() {
           />
         </div>
         {habits.map((habit) => (
-          <div key={habit.id} className="flex flex-col gap-2 px-4 py-2">
-            <div className="flex h-12 items-center">
-              <h3 className="sticky left-4 text-lg">{habit.title}</h3>
+          <div key={habit.id} className="flex flex-col gap-2 py-2">
+            <div className="sticky left-0 flex h-12 w-screen items-center justify-between px-4">
+              <h3 className="text-lg">{habit.title}</h3>
+              <IconButton>
+                <MoreIcon />
+              </IconButton>
             </div>
-            <div className="flex gap-1">
+            <div className="flex gap-1 px-4">
               {dates.map((date) => {
                 const isFirstOfMonth = date.getDate() === 1;
                 const isChecked = Math.random() > 0.5;
@@ -91,15 +96,12 @@ export function App() {
             </div>
           </div>
         ))}
+        <div className="sticky left-0 w-screen p-4">
+          <IconButton>
+            <PlusIcon />
+          </IconButton>
+        </div>
       </div>
     </div>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-      <path d="M20.184 4.58a1.5 1.5 0 0 1-.263 2.104c-4.198 3.265-6.572 7.483-8.528 12.373a1.5 1.5 0 0 1-2.454.504l-4.5-4.5a1.5 1.5 0 1 1 2.122-2.122l2.923 2.924c1.928-4.32 4.45-8.324 8.595-11.547a1.5 1.5 0 0 1 2.105.263Z" />
-    </svg>
   );
 }
