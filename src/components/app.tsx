@@ -10,11 +10,27 @@ const habits = [
   },
   {
     id: "2",
-    title: "🏃‍♂️ Exercise",
+    title: "🏋️‍♂️ Exercise",
   },
   {
     id: "3",
     title: "📚 Read",
+  },
+  {
+    id: "4",
+    title: "📝 Journal",
+  },
+  {
+    id: "5",
+    title: "💧 Drink water",
+  },
+  {
+    id: "6",
+    title: "🍎 Eat fruit",
+  },
+  {
+    id: "7",
+    title: "🥦 Eat vegetables",
   },
 ];
 
@@ -35,10 +51,12 @@ export function App() {
   return (
     <div className="flex h-screen w-screen flex-row-reverse overflow-auto supports-[height:100svh]:h-[100svh]">
       <div>
-        <Header
-          dates={dates}
-          increaseDateRange={() => setStartDate(addMonths(startDate, -1))}
-        />
+        <div className="sticky top-0 z-10">
+          <Header
+            dates={dates}
+            increaseDateRange={() => setStartDate(addMonths(startDate, -1))}
+          />
+        </div>
         {habits.map((habit) => (
           <div key={habit.id} className="table">
             <div className="flex flex-col gap-2 px-4 py-2">
@@ -56,9 +74,9 @@ export function App() {
                       ) : null}
                       <div
                         className={clsx(
-                          "grid h-12 w-12 place-content-center rounded-md ",
+                          "grid h-12 w-12 place-content-center rounded-lg",
                           isChecked
-                            ? "bg-gradient-to-b from-bg-checked-top to-bg-checked-bottom shadow-[inset_0_-2px_2px_rgba(0,0,0,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-2px_1px_rgba(0,0,0,0.2)]"
+                            ? "bg-gradient-to-b from-bg-checked-top to-bg-checked-bottom shadow-[inset_0_-2px_1px_rgba(0,0,0,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-2px_1px_rgba(0,0,0,0.2)]"
                             : "bg-bg-unchecked"
                         )}
                       />

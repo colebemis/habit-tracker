@@ -6,8 +6,8 @@
   --color-text: #000;
   --color-text-secondary: #555;
   --color-bg: #fff;
-  --color-bg-checked-top: hsl(173deg 98% 25%);
-  --color-bg-checked-bottom: hsl(173deg 98% 22%);
+  --color-bg-checked-top: hsl(165deg 100% 28%);
+  --color-bg-checked-bottom: hsl(165deg 100% 26%);
   --color-bg-unchecked: #ddd;
   --color-divider: #ccc;
 }
