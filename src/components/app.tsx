@@ -1,5 +1,6 @@
 import { addMonths, eachDayOfInterval } from "date-fns";
 import React from "react";
+import { useInView } from "react-intersection-observer";
 
 const MONTH_NAMES = [
   "January",
@@ -29,9 +30,8 @@ const DAY_NAMES = [
 export function App() {
   const today = new Date();
 
-  const startDate = addMonths(
-    new Date(today.getFullYear(), today.getMonth(), 1),
-    -1
+  const [startDate, setStartDate] = React.useState(() =>
+    addMonths(new Date(today.getFullYear(), today.getMonth(), 1), -1)
   );
 
   const endDate = today;
@@ -48,16 +48,38 @@ export function App() {
         return `${year}-${month}`;
       })
     );
-  }, []);
+  }, [startDate]);
 
   return (
     <div className="flex h-screen w-screen flex-row-reverse overflow-auto supports-[height:100svh]:h-[100svh]">
       <div>
-        <div className="border-divider table border-b">
+        <div className="table border-b border-divider">
           <div className="flex">
             {months.map(([key, dates]) => {
               const [year, month] = key.split("-").map(Number);
-              return <MonthHeader year={year} month={month} dates={dates} />;
+              return (
+                <MonthHeader
+                  key={key}
+                  year={year}
+                  month={month}
+                  dates={dates}
+                  onEnterView={() => {
+                    const previousMonth = addMonths(
+                      new Date(year, month, 1),
+                      -1
+                    );
+
+                    if (previousMonth < startDate) {
+                      setStartDate(previousMonth);
+                    }
+                  }}
+                  onExitView={(to) => {
+                    if (to === "left") {
+                      setStartDate(dates[0]);
+                    }
+                  }}
+                />
+              );
             })}
           </div>
         </div>
@@ -66,15 +88,44 @@ export function App() {
   );
 }
 
-function MonthHeader(props: { year: number; month: number; dates: Date[] }) {
+function MonthHeader(props: {
+  year: number;
+  month: number;
+  dates: Date[];
+  onEnterView?: () => void;
+  onExitView?: (to: "left" | "right") => void;
+}) {
+  const [previouslyInView, setPreviouslyInView] = React.useState(false);
+  const { ref } = useInView({
+    onChange: (inView, entry) => {
+      console.log(entry);
+
+      if (!previouslyInView && inView) {
+        props.onEnterView?.();
+        setPreviouslyInView(true);
+      }
+
+      if (previouslyInView && !inView) {
+        props.onExitView?.(entry.boundingClientRect.x > 0 ? "right" : "left");
+        setPreviouslyInView(false);
+      }
+    },
+  });
+
   return (
     <div className="px-4 py-2">
-      <h2 className="sticky left-4 inline-block py-2 text-3xl font-semibold leading-8">
+      <h2
+        ref={ref}
+        className="sticky left-4 inline-block py-2 text-3xl font-semibold leading-8"
+      >
         {MONTH_NAMES[props.month]} {props.year}
       </h2>
       <div className="flex gap-1">
         {props.dates.map((date) => (
-          <div className="text-text-secondary flex w-12 flex-col items-center gap-1 py-2 text-sm leading-4">
+          <div
+            key={date.valueOf()}
+            className="flex w-12 flex-col items-center gap-1 py-2 text-sm leading-4 text-text-secondary"
+          >
             <span>{DAY_NAMES[date.getDay()].slice(0, 1)}</span>
             <span>{date.getDate()}</span>
           </div>
