@@ -3,12 +3,15 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Spline Sans", "sans-serif"],
+      },
       colors: {
         text: "var(--color-text)",
         "text-secondary": "var(--color-text-secondary)",
+        "text-checked": "var(--color-text-checked)",
         bg: "var(--color-bg)",
-        "bg-checked-top": "var(--color-bg-checked-top)",
-        "bg-checked-bottom": "var(--color-bg-checked-bottom)",
+        "bg-checked": "var(--color-bg-checked)",
         "bg-unchecked": "var(--color-bg-unchecked)",
         divider: "var(--color-divider)",
       },

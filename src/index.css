@@ -5,9 +5,9 @@
 :root {
   --color-text: #000;
   --color-text-secondary: #555;
+  --color-text-checked: #fff;
   --color-bg: #fff;
-  --color-bg-checked-top: hsl(165deg 100% 28%);
-  --color-bg-checked-bottom: hsl(165deg 100% 26%);
+  --color-bg-checked: hsl(175deg 100% 30%);
   --color-bg-unchecked: #ddd;
   --color-divider: #ccc;
 }

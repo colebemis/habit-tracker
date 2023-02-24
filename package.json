@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/spline-sans": "^4.5.14",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",
     "react": "^18.2.0",

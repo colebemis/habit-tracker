@@ -111,3 +111,5 @@ const CalendarDate = React.memo(
     );
   }
 );
+
+CalendarDate.displayName = "CalendarDate";

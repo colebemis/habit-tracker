@@ -76,10 +76,12 @@ export function App() {
                         className={clsx(
                           "grid h-12 w-12 place-content-center rounded-lg",
                           isChecked
-                            ? "bg-gradient-to-b from-bg-checked-top to-bg-checked-bottom shadow-[inset_0_-2px_1px_rgba(0,0,0,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-2px_1px_rgba(0,0,0,0.2)]"
+                            ? "bg-bg-checked text-text-checked shadow-[inset_0_-3px_0_rgba(0,0,0,0.2)]"
                             : "bg-bg-unchecked"
                         )}
-                      />
+                      >
+                        {isChecked ? <CheckIcon /> : null}
+                      </div>
                     </React.Fragment>
                   );
                 })}
@@ -89,5 +91,13 @@ export function App() {
         ))}
       </div>
     </div>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+      <path d="M20.184 4.58a1.5 1.5 0 0 1-.263 2.104c-4.198 3.265-6.572 7.483-8.528 12.373a1.5 1.5 0 0 1-2.454.504l-4.5-4.5a1.5 1.5 0 1 1 2.122-2.122l2.923 2.924c1.928-4.32 4.45-8.324 8.595-11.547a1.5 1.5 0 0 1 2.105.263Z" />
+    </svg>
   );
 }
