@@ -49,7 +49,7 @@ export function App() {
   }, [startDate]);
 
   return (
-    <div className="flex h-screen w-screen flex-row-reverse overflow-auto supports-[height:100svh]:h-[100svh]">
+    <div className="flex h-screen w-screen flex-row-reverse overflow-auto [-webkit-transform:translateZ(0)] supports-[height:100svh]:h-[100svh]">
       <div>
         <div className="sticky top-0 z-10">
           <Header
