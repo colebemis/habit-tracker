@@ -88,7 +88,7 @@ export function App() {
                     <div
                       tabIndex={0}
                       className={clsx(
-                        "grid h-12 w-12 place-content-center rounded-lg outline-none focus:ring-2 focus:ring-border-focus focus:ring-offset-1 focus:ring-offset-bg",
+                        "grid h-12 w-12 place-content-center rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-border-focus focus-visible:ring-offset-1 focus-visible:ring-offset-bg",
                         isChecked
                           ? "bg-bg-checked text-text-checked shadow-[inset_0_-3px_0_rgba(0,0,0,0.2)]"
                           : "bg-bg-unchecked"

@@ -73,7 +73,7 @@ export function Header(props: {
           </h2>
           <DropdownMenu modal={false}>
             <DropdownMenu.Trigger asChild>
-              <button className="grid h-12 w-12 place-content-center rounded-lg outline-none hover:bg-bg-secondary focus:ring-2 focus:ring-border-focus focus:ring-offset-1 focus:ring-offset-bg">
+              <button className="grid h-12 w-12 place-content-center rounded-lg outline-none hover:bg-bg-secondary focus-visible:ring-2 focus-visible:ring-border-focus focus-visible:ring-offset-1 focus-visible:ring-offset-bg">
                 <img
                   src="https://github.com/colebemis.png"
                   className="h-8 w-8 rounded-full"

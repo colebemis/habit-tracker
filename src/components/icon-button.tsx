@@ -9,7 +9,7 @@ export const IconButton = React.forwardRef<
     <button
       ref={ref}
       className={cx(
-        "grid h-12 w-12 place-content-center rounded-lg text-text-secondary outline-none hover:bg-bg-secondary focus:ring-2 focus:ring-border-focus focus:ring-offset-1 focus:ring-offset-bg",
+        "grid h-12 w-12 place-content-center rounded-lg text-text-secondary outline-none hover:bg-bg-secondary focus-visible:ring-2 focus-visible:ring-border-focus focus-visible:ring-offset-1 focus-visible:ring-offset-bg",
         className
       )}
       {...props}
