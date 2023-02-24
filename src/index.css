@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-text: #000;
+  --color-text-secondary: #555;
+  --color-bg: #fff;
+  --color-divider: #ccc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #eee;
+    --color-text-secondary: #aaa;
+    --color-bg: #111;
+    --color-divider: #333;
+  }
+}
