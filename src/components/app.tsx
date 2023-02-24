@@ -58,7 +58,7 @@ export function App() {
                         className={clsx(
                           "grid h-12 w-12 place-content-center rounded-md ",
                           isChecked
-                            ? "bg-bg-checked shadow-[inset_0_-2px_2px_rgba(0,0,0,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-2px_1px_rgba(0,0,0,0.2)]"
+                            ? "bg-gradient-to-b from-bg-checked-top to-bg-checked-bottom shadow-[inset_0_-2px_2px_rgba(0,0,0,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-2px_1px_rgba(0,0,0,0.2)]"
                             : "bg-bg-unchecked"
                         )}
                       />
