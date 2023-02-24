@@ -47,17 +47,22 @@ export function App() {
               </div>
               <div className="flex gap-1">
                 {dates.map((date) => {
-                  const checked = Math.random() > 0.5;
+                  const isFirstOfMonth = date.getDate() === 1;
+                  const isChecked = Math.random() > 0.5;
                   return (
-                    <div
-                      key={date.valueOf()}
-                      className={clsx(
-                        "grid h-12 w-12 place-content-center rounded-md ",
-                        checked
-                          ? "bg-bg-checked shadow-[inset_0_-2px_2px_rgba(0,0,0,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-2px_1px_rgba(0,0,0,0.2)]"
-                          : "bg-bg-unchecked"
-                      )}
-                    />
+                    <React.Fragment key={date.valueOf()}>
+                      {isFirstOfMonth ? (
+                        <div role="separator" className="w-2" />
+                      ) : null}
+                      <div
+                        className={clsx(
+                          "grid h-12 w-12 place-content-center rounded-md ",
+                          isChecked
+                            ? "bg-bg-checked shadow-[inset_0_-2px_2px_rgba(0,0,0,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-2px_1px_rgba(0,0,0,0.2)]"
+                            : "bg-bg-unchecked"
+                        )}
+                      />
+                    </React.Fragment>
                   );
                 })}
               </div>

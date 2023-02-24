@@ -67,13 +67,21 @@ export function Header(props: {
           {MONTH_NAMES[minDateInView.getMonth()]} {minDateInView.getFullYear()}
         </h2>
         <div className="flex gap-1">
-          {props.dates.map((date) => (
-            <CalendarDate
-              key={date.valueOf()}
-              date={date}
-              onIntersectionChange={handleIntersectionChange}
-            />
-          ))}
+          {props.dates.map((date) => {
+            const isFirstOfMonth = date.getDate() === 1;
+            return (
+              <React.Fragment key={date.valueOf()}>
+                {isFirstOfMonth ? (
+                  <div role="separator" className="w-2" />
+                ) : null}
+                <CalendarDate
+                  key={date.valueOf()}
+                  date={date}
+                  onIntersectionChange={handleIntersectionChange}
+                />
+              </React.Fragment>
+            );
+          })}
         </div>
       </div>
     </div>
