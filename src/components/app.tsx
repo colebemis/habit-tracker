@@ -1,4 +1,4 @@
-import { addMonths, eachDayOfInterval } from "date-fns";
+import { addMonths, eachDayOfInterval, isMonday } from "date-fns";
 import React from "react";
 import { Header } from "./header";
 import clsx from "clsx";
@@ -78,11 +78,10 @@ export function App() {
             </div>
             <div className="flex gap-1 px-4">
               {dates.map((date) => {
-                const isFirstOfMonth = date.getDate() === 1;
                 const isChecked = Math.random() > 0.5;
                 return (
                   <React.Fragment key={date.valueOf()}>
-                    {isFirstOfMonth ? (
+                    {isMonday(date) ? (
                       <div role="separator" className="w-2" />
                     ) : null}
                     <div

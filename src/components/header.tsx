@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { isMonday } from "date-fns";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import { cx } from "../utils/cx";
@@ -87,10 +88,9 @@ export function Header(props: {
         </div>
         <div className="flex gap-1 px-4">
           {props.dates.map((date) => {
-            const isFirstOfMonth = date.getDate() === 1;
             return (
               <React.Fragment key={date.valueOf()}>
-                {isFirstOfMonth ? (
+                {isMonday(date) ? (
                   <div role="separator" className="w-2" />
                 ) : null}
                 <CalendarDate
